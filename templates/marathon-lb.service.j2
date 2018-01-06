@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 WorkingDirectory={{marathonlb_home}}
-ExecStart=/bin/bash -c "{{marathonlb_home}}/marathon_lb.py --marathon http://localhost:8080 --group external --haproxy-map
+ExecStart=/bin/bash -c "{{marathonlb_home}}/app/marathon_lb.py --marathon http://localhost:8080 --group external --haproxy-map
 Type=simple
 
 [Install]

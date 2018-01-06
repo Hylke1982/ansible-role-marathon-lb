@@ -14,7 +14,7 @@
 - name: "Clone marathon application"
   git:
     repo: "{{ marathonlb_link }}"
-    dest: "{{ marathonlb_home }}"
+    dest: "{{ marathonlb_home }}/app"
     version: "{{ marathonlb_version }}"
 
 - name: "Install Marathon service unit"
