@@ -1,0 +1,37 @@
+- name: "Create Marathon-LB group"
+  group:
+    name: "{{ marathonlb_group }}"
+  become: true
+
+- name: "Create Marathon-LB user"
+  user:
+    name: "{{ marathonlb_user }}"
+    comment: "Marathon-LB"
+    group: "{{ marathonlb_group }}"
+    home: "{{ marathonlb_home }}"
+  become: true
+
+- name: "Clone marathon application"
+  git:
+    repo: "{{ marathonlb_link }}"
+    dest: "{{ marathonlb_home }}"
+    version: "{{ marathonlb_version }}"
+
+- name: "Install Marathon service unit"
+  template:
+    src: marathon-lb.service.j2
+    dest: /lib/systemd/system/marathon-lb.service
+    owner: root
+    group: root
+    mode: 0555
+  become: true
+
+- name: "reload systemd"
+  systemd: daemon_reload=yes
+
+- name: "Ensure Mesos marathon is running and set to start on boot."
+  service:
+    name: marathon
+    state: stopped
+    enabled: no
+  become: true

@@ -1,0 +1,5 @@
+marathonlb_user: marathonlb
+marathonlb_group: marathonlb
+marathonlb_home: /opt/marathon-lb
+marathonlb_link: https://github.com/mesosphere/marathon-lb.git
+marathonlb_version: v1.11.2
