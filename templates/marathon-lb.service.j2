@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 WorkingDirectory={{marathonlb_home}}/app
 ExecStartPre=/bin/bash -c "pip install -r {{marathonlb_home}}/app/requirements.txt"
-ExecStart=/bin/bash -c "docker run -e PORTS=$portnumber --net=host mesosphere/marathon-lb sse"
+ExecStart=/bin/bash -c "docker run -e PORTS={{marathonlb_ports}} --net=host mesosphere/marathon-lb sse"
 Type=simple
 
 [Install]
