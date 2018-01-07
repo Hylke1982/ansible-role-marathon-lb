@@ -2,7 +2,7 @@
 
 dependencies:
 - { role: marathon }
-- { role: mesos }
+- { role: mesos-dns }
 - { role: geerlingguy.pip }
 - { role: geerlingguy.docker }
 
