@@ -4,9 +4,9 @@ After=network.target network-online.target marathon.service
 Wants=network-online.target
 
 [Service]
-WorkingDirectory={{marathonlb_home}}
+WorkingDirectory={{marathonlb_home}}/app
 ExecStartPre=/bin/bash -c "pip install -r {{marathonlb_home}}/app/requirements.txt"
-ExecStart=/bin/bash -c "{{marathonlb_home}}/app/marathon_lb.py --marathon http://localhost:8080 --group external --haproxy-map"
+ExecStart=/bin/bash -c "docker run -e PORTS=$portnumber --net=host mesosphere/marathon-lb sse"
 Type=simple
 
 [Install]
