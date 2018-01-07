@@ -3,7 +3,8 @@
 dependencies:
 - { role: marathon }
 - { role: mesos }
-- { role: mesos }
+- { role: geerlingguy.pip }
+- { role: geerlingguy.docker }
 
 galaxy_info:
   author: Hylke Stapersma
