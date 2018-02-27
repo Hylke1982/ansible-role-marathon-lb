@@ -4,8 +4,9 @@ After=network.target network-online.target marathon.service
 Wants=network-online.target
 
 [Service]
+EnvironmentFile={{marathonlb_home}}/environment
 WorkingDirectory={{marathonlb_home}}/app
-ExecStart=/bin/bash -c "docker run -e PORTS={{marathonlb_ports}} --dns=127.0.0.1 --net=host mesosphere/marathon-lb sse --group \"*\""
+ExecStart=/bin/bash -c "docker run -e PORTS=$PORTS --dns=127.0.0.1 --net=host mesosphere/marathon-lb sse --group --marathon $MARATHON_URL \"*\""
 Type=simple
 
 [Install]

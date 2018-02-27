@@ -17,6 +17,16 @@
     dest: "{{ marathonlb_home }}/app"
     version: "{{ marathonlb_version }}"
 
+- name: "Create empty environments file"
+  copy:
+    content: ""
+    dest: "{{marathonlb_home}}/environment"
+    force: no
+    owner: "{{ marathonlb_user }}"
+    group: "{{ marathonlb_group }}"
+    mode: 0555
+  become: true
+
 - name: "Install Marathon service unit"
   template:
     src: marathon-lb.service.j2
