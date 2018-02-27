@@ -41,7 +41,7 @@
 
 - name: "Ensure Mesos marathon is running and set to start on boot."
   service:
-    name: marathon
+    name: marathon-lb
     state: stopped
     enabled: no
   become: true
